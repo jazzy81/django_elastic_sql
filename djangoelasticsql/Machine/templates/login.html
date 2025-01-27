@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block body %}
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1593376893114-1aed528d80cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2OTcxNDV8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTczNzM3NzQ5MXww&ixlib=rb-4.0.3&q=80&w=1080');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        background-color: rgba(181, 166, 166, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(56, 27, 27, 0.2);
+        width: 350px;
+    }
+
+    .form-floating {
+        margin-bottom: 15px;
+    }
+
+    .form-container h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="content-wrapper">
+    <div class="form-container">
+        <h1>Login</h1>
+        <form method="post" action="/services/login">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingCardNumber" name="card_no" placeholder="1234 5678 9012 3456" required>
+                <label for="floatingCardNumber">Card Number</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPin" name="pin" placeholder="PIN" required>
+                <label for="floatingPin">PIN</label>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

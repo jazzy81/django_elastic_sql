@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Signup virtual card{% endblock title %}
+
+{% block body %}
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1593376893114-1aed528d80cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2OTcxNDV8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTczNzM3NzQ5MXww&ixlib=rb-4.0.3&q=80&w=1080');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .form-container h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+</style>
+
+<div class="content-wrapper">
+    <div class="form-container">
+        <h1>virtual card Signup</h1>
+        <form class="row g-3 needs-validation" novalidate method="post" action="/services/signup">
+            <div class="col-md-6">
+                <label for="validationCardNumber" class="form-label">Card Number</label>
+                <input type="text" class="form-control" id="validationCardNumber" name="card number" required>
+                <div class="invalid-feedback">
+                    Please provide a valid card number.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationPin" class="form-label">PIN</label>
+                <input type="password" class="form-control" name="pin" id="validationPin" required>
+                <div class="invalid-feedback">
+                    Please provide a valid PIN.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationBalance" class="form-label">Balance</label>
+                <input type="number" class="form-control" name="balance" id="validationBalance" required>
+                <div class="invalid-feedback">
+                    Please provide a valid balance.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustomUsername" class="form-label">User Name</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input type="text" class="form-control" id="validationCustomUsername" name="username" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                        Please choose a username.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Generate Card Number</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

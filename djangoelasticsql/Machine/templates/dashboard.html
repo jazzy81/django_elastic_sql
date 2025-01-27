@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard{% endblock title %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="position-relative text-center">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             alt="Dashboard Image" class="img-fluid w-100">
+        <div class="position-absolute top-50 start-50 translate-middle text-white" style="background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px;">
+            <h1>Welcome, {{ user_details.username }}!</h1>
+            <p><strong>Card Number:</strong> {{ user_details.card_no }}</p>
+            <p><strong>Balance:</strong> ₹{{ user_details.balance|floatformat:2 }}</p>
+            <p><strong>Issue Date:</strong> {{ user_details.issue_date|date:"d M Y" }}</p>
+            <p><strong>Expiry Date:</strong> {{ user_details.expiry_date|date:"d M Y" }}</p>
+            
+            <div class="mt-4">
+                <a href="{% url 'withdraw' user_details.card_no %}" class="btn btn-danger btn-lg me-2">Withdraw</a>
+                <a href="{% url 'deposit' user_details.card_no %}" class="btn btn-success btn-lg me-2">Deposit</a>
+                <a href="{% url 'logout' %}" class="btn btn-secondary btn-lg">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
